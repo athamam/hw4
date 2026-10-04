@@ -179,3 +179,15 @@ Log of prompts given to the AI coding assistant, organized by problem.
 ---
 
 ## Problem 13: Push to GitHub and submit the URL
+
+Repository (public): https://github.com/athamam/hw4
+
+1. > Moving on to problem 13, push to GitHub and submit the URL. I need to put my code in a folder named hw4 and push it to a public GitHub repository, then I will submit the repo URL (so graders can open and clone). I will not upload a zip file for this hw
+   >
+   > Do not put real .env, campus_customs.db, or product images in the GitHub repo. Use .gitignore. Include .env.example with placeholders only
+   >
+   > This is the expected layout and local-only data pack (not in git) [layout + data pack screenshots]
+   >
+   > The agent itself is four files under backend/: prompts/prompt.md, agent.py, tools.py and models.py
+   >
+   > README.md should explain how to run the front end and back end after placing the data pack
