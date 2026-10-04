@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Customs — App Check (HW4 Problem 11)</title>
+  <style>
+    :root {
+      --pink-100: #ffe9f3; --pink-200: #ffd0e5; --pink-600: #db2777; --pink-700: #b01360;
+      --plum: #3a0b24; --cream: #fff9f4; --muted: #8a5570; --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--plum);
+      background: radial-gradient(900px 500px at 100% -10%, var(--pink-100), transparent 60%), var(--cream); }
+    header { background: linear-gradient(120deg, #ff7db2, #db2777 60%, #b01360); color: var(--white); padding: 34px 24px; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 24px; }
+    header h1 { margin: 0 0 6px; font-size: 1.9rem; }
+    header p { margin: 0; opacity: 0.92; }
+    main { padding: 28px 0 60px; }
+    .intro { color: var(--muted); margin: 18px 0 28px; line-height: 1.6; }
+    .check { background: var(--white); border: 1px solid var(--pink-200); border-radius: 16px;
+      box-shadow: 0 10px 28px rgba(176,19,96,0.10); padding: 22px 24px; margin-bottom: 26px; }
+    .check h2 { margin: 0 0 4px; font-size: 1.25rem; color: var(--pink-700); }
+    .num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px;
+      background: var(--pink-600); color: #fff; border-radius: 50%; font-size: 0.9rem; margin-right: 8px; vertical-align: middle; }
+    .proves { color: var(--muted); font-size: 0.95rem; margin: 0 0 16px; line-height: 1.55; }
+    .shot { border: 1px solid var(--pink-200); border-radius: 12px; overflow: hidden; background: var(--cream); }
+    .shot img { display: block; width: 100%; height: auto; }
+    .cap { font-size: 0.85rem; color: var(--muted); margin-top: 8px; font-style: italic; }
+    footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 10px 0 40px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Campus Customs — App Check</h1>
+      <p>HW4 · Problem 11 · Visual proof that key features work in the running app</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="intro">
+      Each section below shows a screenshot from the live site (React + Vite front end,
+      FastAPI + PydanticAI backend) with a short note on what it demonstrates. Double-click
+      this file to open it in a browser; the images load from <code>app_check_images/</code>.
+    </p>
+
+    <section class="check">
+      <h2><span class="num">1</span>Inventory level of an item</h2>
+      <p class="proves">
+        The product page shows live stock per size (XS–XXL) pulled from the database's
+        <code>inventory</code> table — proving the app reports real quantities, including
+        a low-stock size (XL: 2) and the 60-unit total, rather than invented numbers.
+      </p>
+      <div class="shot"><img src="app_check_images/inventory.png" alt="Sizes and stock grid showing per-size quantities and a 60 total" /></div>
+      <p class="cap">Caption: Per-size stock on the product page — XS 15, S 5, M 5, L 8, XL 2, XXL 25 (60 total in stock).</p>
+    </section>
+
+    <section class="check">
+      <h2><span class="num">2</span>Dynamic search cards after a category question</h2>
+      <p class="proves">
+        Asking the chatbot "I'm looking for crewnecks under $60" makes the PydanticAI agent
+        search the catalogue; matching products appear as cards (image, name, price) both in
+        the chat and on the page — proving the agent's search updates the storefront live and
+        respects the budget filter (all $58.00).
+      </p>
+      <div class="shot"><img src="app_check_images/dynamic_search.png" alt="Chat panel showing crewneck result cards under $60 after a category question" /></div>
+      <p class="cap">Caption: A budget category question returns matching crewneck cards ($58.00) rendered dynamically by the agent.</p>
+    </section>
+
+    <section class="check">
+      <h2><span class="num">3</span>Usability feature: product page toolbar</h2>
+      <p class="proves">
+        The Products page has a search box, category filter, sort control, and an
+        "In stock only" toggle — proving the usability toolbar lets shoppers quickly narrow
+        100+ products instead of scrolling one long grid.
+      </p>
+      <div class="shot"><img src="app_check_images/toolbar.png" alt="Products page toolbar with search, category, sort, and in-stock filter" /></div>
+      <p class="cap">Caption: The Products toolbar — search, category, sort, and in-stock filtering.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">Campus Customs · MGT 409 HW4 · app_check.html</footer>
+</body>
+</html>

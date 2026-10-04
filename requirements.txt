@@ -1,0 +1,21 @@
+# Campus Customs (hw4) - Python backend requirements
+# Frontend (React + Vite + TypeScript) dependencies live in package.json, not here.
+
+# --- Web API ---
+fastapi>=0.115            # REST API for catalogue, inventory, auth, and chat
+uvicorn[standard]>=0.30   # ASGI server to run FastAPI
+python-multipart>=0.0.9   # form parsing (e.g., OAuth2 login form)
+
+# --- AI agent ---
+pydantic-ai-slim[openai]>=1.0   # PydanticAI agent + OpenAI model client (routed via Portkey)
+
+# --- Config & auth ---
+python-dotenv>=1.0        # load PORTKEY_API_KEY from the root .env
+pyjwt>=2.8                # signed session tokens after login
+email-validator>=2.0      # validates signup/login email addresses (pydantic EmailStr)
+# Password checks use stdlib hashlib (DB stores pbkdf2_sha256$salt$hash), so no extra hashing library.
+# Database access uses stdlib sqlite3 (data/campus_customs.db).
+
+# --- Testing ---
+pytest>=8.0
+httpx>=0.27               # FastAPI TestClient

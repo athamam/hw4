@@ -1,0 +1,28 @@
+# --- Secrets (never commit) ---
+.env
+*.env
+!.env.example
+
+# --- Local-only data pack (provided separately, not in git) ---
+# Contains the database and product images.
+data/
+
+# --- Python ---
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- Node / frontend build ---
+node_modules/
+frontend/dist/
+frontend/node_modules/
+
+# --- Audit trail temp/corrupt artifacts (the main file IS committed) ---
+output/*.json.tmp
+output/audit_trail.corrupt-*.json
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+*.tmp
