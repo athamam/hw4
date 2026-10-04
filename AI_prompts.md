@@ -68,7 +68,15 @@ Log of prompts given to the AI coding assistant, organized by problem.
    > email: test@campuscustoms.yale.edu
    > password: password
 
+   *Follow-up — what was lacking:* the first pass built signup/login but couldn't verify the
+   seed accounts. This prompt surfaced that my verifier assumed the wrong hash format for the
+   legacy seed rows.
+
 3. > I want to make sure the other existing users will be able to login later, other than the test user account
+
+   *Follow-up — what was lacking:* fixing only the test user wasn't enough; this broadened the
+   fix so all seed accounts verify, which led to detecting the real scheme (salt-as-string,
+   120k PBKDF2 iterations) and auto-upgrading legacy hashes on login.
 
 4. > I should be able to login with the test user [screenshot of login page showing "Incorrect email or password."]
 

@@ -37,6 +37,11 @@ hw4/
     └── products/             # product images referenced by the catalogue
 ```
 
+## Prerequisites
+- **Python 3.11+**
+- **Node.js 18+** and npm
+- A **Portkey API key**
+
 ## Setup
 
 ### 1. API key
@@ -85,6 +90,16 @@ Open **http://localhost:5173**. Vite proxies `/api` and `/images` to the backend
 - **Chat** via the bottom-right bubble: ask for gear ("show me hoodies under $60"), check
   stock, or, on a product page, "do you have this in pink?". Matches appear as cards on the
   page. Logged-in users' chat history is saved and reloaded on return; guests can chat too.
+
+## Troubleshooting
+- **Windows "No such file or directory" / long path during `pip install`:** the `openai`
+  dependency has deeply nested files. If your clone path is very long, pip can exceed
+  Windows' 260-char limit. Fixes: clone to a short path (e.g. `C:\hw4`), or enable long
+  paths once (admin PowerShell): `Set-ItemProperty 'HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem' LongPathsEnabled 1`.
+- **Chat says it "hit a snag":** check `PORTKEY_API_KEY` is set in `hw4/.env`; confirm with
+  `GET http://127.0.0.1:8000/api/health` → `"portkey_key_set": true`.
+- **Products/images don't load:** start the **backend first** (Vite proxies `/api` and
+  `/images` to `:8000`), and make sure the data pack is at `hw4/data/`.
 
 ## Notes for graders
 - Every agent run is appended to `output/audit_trail.json` (append-only).

@@ -1,21 +1,25 @@
 # Campus Customs (hw4) - Python backend requirements
 # Frontend (React + Vite + TypeScript) dependencies live in package.json, not here.
+# Versions are pinned to the set this project was built and tested against, so a
+# fresh `pip install -r requirements.txt` reproduces a known-good environment.
+# Tested on Python 3.11-3.14.
 
 # --- Web API ---
-fastapi>=0.115            # REST API for catalogue, inventory, auth, and chat
-uvicorn[standard]>=0.30   # ASGI server to run FastAPI
-python-multipart>=0.0.9   # form parsing (e.g., OAuth2 login form)
+fastapi==0.142.2            # REST API for catalogue, inventory, auth, and chat
+uvicorn[standard]==0.54.0   # ASGI server to run FastAPI
+python-multipart==0.0.32    # form parsing (e.g., OAuth2 login form)
 
 # --- AI agent ---
-pydantic-ai-slim[openai]>=1.0   # PydanticAI agent + OpenAI model client (routed via Portkey)
+pydantic-ai-slim[openai]==2.54.0   # PydanticAI agent + OpenAI model client (routed via Portkey)
+openai==3.24.0                     # OpenAI client used by PydanticAI (pinned for reproducibility)
 
 # --- Config & auth ---
-python-dotenv>=1.0        # load PORTKEY_API_KEY from the root .env
-pyjwt>=2.8                # signed session tokens after login
-email-validator>=2.0      # validates signup/login email addresses (pydantic EmailStr)
+python-dotenv==1.2.4       # load PORTKEY_API_KEY from the .env
+pyjwt==2.15.1              # signed session tokens after login
+email-validator==2.3.0     # validates signup/login email addresses (pydantic EmailStr)
 # Password checks use stdlib hashlib (DB stores pbkdf2_sha256$salt$hash), so no extra hashing library.
 # Database access uses stdlib sqlite3 (data/campus_customs.db).
 
 # --- Testing ---
-pytest>=8.0
-httpx>=0.27               # FastAPI TestClient
+pytest==9.1.1
+httpx==0.28.1              # FastAPI TestClient
